@@ -6,13 +6,24 @@ public class DebugExercise2 {
     /** Returns the max of a and b. Do not step into this function. 
       * This function may have a bug, but if it does, you should find it
       * by stepping over, not into. */
+//    public static int max(int a, int b) {
+//        int w = (b - a) >> 31;
+//        /* If you're stepping into this function, click the
+//           step out button because you're not going to learn anything. */
+//        int z = ~(b - a) >> 31;
+//
+//        int max = b & w | a & z;
+//        return max;
+//    }
+    //bug 1
     public static int max(int a, int b) {
-        int w = (b - a) >> 31;
+//        int w = (b - a) >> 31; /* >> means signed right shift operator; >>31 is to test if negative*/
         /* If you're stepping into this function, click the
            step out button because you're not going to learn anything. */
-        int z = ~(b - a) >> 31;
+//        int z = ~(b - a) >> 31;
+//        /* ～(tlide) means 二進位制表示的所有0都是1，所有的0都是1 test if the valus is positive*/
 
-        int max = b & w | a & z;
+        int max = Math.max(a,b);
         return max;
     }
 
@@ -60,7 +71,7 @@ public class DebugExercise2 {
         int i = 0;
         int sum = 0;
         while (i < x.length) {
-            sum = sum + add(sum, x[i]);
+            sum = sum +x[i];
             i = i + 1;
         }
         return sum;
