@@ -25,35 +25,35 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    public void addFirst(T x){
+    public void addFirst( T x) {
         size = size + 1;
-        StuffNode a = new StuffNode(sentinel, x,sentinel.next);
+        StuffNode a = new StuffNode( sentinel, x, sentinel.next);
         sentinel.next.prev = a;
         sentinel.next = a;
         /* 把a 放在第一位（sentinel.next.prev）与sentinel的next之间*/
 
     }
-    public void addLast(T x){
+    public void addLast( T x) {
         size = size + 1;
-        StuffNode a = new StuffNode(sentinel.prev,x,sentinel);
+        StuffNode a = new StuffNode( sentinel.prev, x, sentinel);
         sentinel.prev.next = a;
         sentinel.prev = a;
         /* 把a 放在最后一位（sentinel.prev.next）与sentinel的prev之间*/
     }
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
     public int size(){
         return size;
     }
-    public void printDeque(){
+    public void printDeque() {
         StuffNode position=sentinel.next;
         for (int i = 0; i < size; i++) {
             System.out.println(position.item + " ");
             position = position.next;
         }
     }
-    public T removeFirst(){
+    public T removeFirst() {
         if (sentinel.next == sentinel){
             return null;
         }
@@ -63,7 +63,7 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel.next.next;
         return a;
     }
-    public T removeLast(){
+    public T removeLast() {
         if (sentinel.prev == null){
             return null;
         }
@@ -73,7 +73,7 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel.prev.prev;
         return a;
     }
-    public T get(int index){
+    public T get(int index) {
         StuffNode position = sentinel.next;
         if (index > size - 1){
             return null;

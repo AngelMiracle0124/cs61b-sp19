@@ -4,8 +4,8 @@ public class ArrayDeque<T>{
     private int nextfirst;
     private int nextlast;
     /*empty set*/
-    public ArrayDeque(){
-        T[] items = (T []) new Object[8];
+    public ArrayDeque() {
+        items = (T []) new Object[8];
         size = 0;
         nextfirst = 0;
         nextlast = 1;
@@ -84,5 +84,12 @@ public class ArrayDeque<T>{
         }
         int p = addone(nextfirst);
         return items[(index + p) % items.length];
+    }
+    public static void main(String[] args) {
+        System.out.println("Running tests.\n");
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addFirst(10);
+        ad1.addLast(20);
+
     }
 }
