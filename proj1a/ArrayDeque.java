@@ -73,7 +73,7 @@ public class ArrayDeque<T>{
     }
     public T removeLast(){
         T oldlast = items[minusone(nextlast)];
-        nextlast = minusone(nextfirst);
+        nextlast = minusone(nextlast);
         items[nextlast] = null;
         size = size - 1;
         return oldlast;
@@ -85,11 +85,17 @@ public class ArrayDeque<T>{
         int p = addone(nextfirst);
         return items[(index + p) % items.length];
     }
-//    public static void main(String[] args) {
-//        System.out.println("Running tests.\n");
-//        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
-//        ad1.addFirst(10);
-//        ad1.addLast(20);
-//
-//    }
+    public static void main(String[] args) {
+        System.out.println("Running tests.\n");
+        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+        ad1.addFirst(10);
+        ad1.addLast(21);
+        ad1.addLast(22);
+        ad1.addLast(23);
+        ad1.addLast(24);
+        ad1.addLast(25);
+        ad1.removeLast();
+        System.out.println(ad1.get(5));
+
+    }
 }
