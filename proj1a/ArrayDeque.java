@@ -65,15 +65,21 @@ public class ArrayDeque<T>{
         }
     }
     public T removeFirst(){
-        T oldfirst = items[addone(nextfirst)];
+        if (size == 0){
+            return null;
+        }
         nextfirst = addone(nextfirst);
+        T oldfirst = items[nextfirst];
         items[nextfirst] = null;
         size = size - 1;
         return oldfirst;
     }
     public T removeLast(){
-        T oldlast = items[minusone(nextlast)];
+        if (size == 0){
+            return null;
+        }
         nextlast = minusone(nextlast);
+        T oldlast = items[nextlast];
         items[nextlast] = null;
         size = size - 1;
         return oldlast;
@@ -89,13 +95,30 @@ public class ArrayDeque<T>{
         System.out.println("Running tests.\n");
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
         ad1.addFirst(10);
-        ad1.addLast(21);
-        ad1.addLast(22);
-        ad1.addLast(23);
-        ad1.addLast(24);
-        ad1.addLast(25);
-        ad1.removeLast();
-        System.out.println(ad1.get(5));
+        ad1.addFirst(11);
+        ad1.addFirst(12);
+        ad1.addFirst(13);
+        ad1.addFirst(14);
+        ad1.addFirst(15);
+        ad1.addFirst(16);
+        ad1.addFirst(17);
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.addFirst(10);
+        ad1.addFirst(11);
+        ad1.addFirst(12);
+        ad1.addFirst(13);
+        ad1.addFirst(14);
+        ad1.addFirst(15);
+        ad1.addFirst(16);
+        ad1.addFirst(17);
+        ad1.isEmpty();
+
 
     }
 }
