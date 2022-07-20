@@ -44,6 +44,9 @@ public class LinkedListDeque<T> {
         return size == 0;
     }
     public int size(){
+        if (size < 0){
+            return 0;
+        }
         return size;
     }
     public void printDeque() {
@@ -79,10 +82,10 @@ public class LinkedListDeque<T> {
             return null;
         }
         for (int i = 0; i < size; i++) {
-            position = position.next;
             if (i == index) {
                 return position.item;
             }
+            position = position.next;
         }
         return null;
     }

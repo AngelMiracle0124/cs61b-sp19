@@ -85,11 +85,11 @@ public class ArrayDeque<T>{
         int p = addone(nextfirst);
         return items[(index + p) % items.length];
     }
-    public static void main(String[] args) {
-        System.out.println("Running tests.\n");
-        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
-        ad1.addFirst(10);
-        ad1.addLast(20);
-
-    }
+//    public static void main(String[] args) {
+//        System.out.println("Running tests.\n");
+//        ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+//        ad1.addFirst(10);
+//        ad1.addLast(20);
+//
+//    }
 }
