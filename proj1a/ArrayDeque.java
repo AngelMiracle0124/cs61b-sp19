@@ -87,6 +87,9 @@ public class ArrayDeque<T>{
         T oldfirst = items[nextfirst];
         items[nextfirst] = null;
         size = size - 1;
+        if (items.length >= 16 && size < (items.length / 4)) {
+            resize();
+        }
         return oldfirst;
     }
     public T removeLast(){
@@ -97,6 +100,9 @@ public class ArrayDeque<T>{
         T oldlast = items[nextlast];
         items[nextlast] = null;
         size = size - 1;
+        if (items.length >= 16 && size < (items.length / 4)) {
+            resize();
+        }
         return oldlast;
     }
     public T get(int index){
