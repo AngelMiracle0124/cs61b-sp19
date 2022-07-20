@@ -12,7 +12,8 @@ public class ArrayDeque<T>{
     }
     private void givespaceforaddfirst(int capacity){
         T[] newarray = (T []) new Object[capacity];
-        System.arraycopy(items,0,newarray,1,size);
+        System.arraycopy(items,0,newarray,0,nextfirst);
+        System.arraycopy(items,nextfirst,newarray,nextfirst+1,size-nextfirst);
         items = newarray;
     }
     private void givespaceforaddlast(int capacity){
@@ -35,10 +36,24 @@ public class ArrayDeque<T>{
 //            nextlast = nextlast - items.length;
 //        }
     }
+    private void resize() {
+        T[] newarray = (T []) new Object[size+1];
+        int oldindex = addone(nextfirst);
+        for (int i = 0; i < size;i++){
+                newarray[i] = items[oldindex];
+                oldindex = addone(oldindex);
+        }
+        items = newarray;
+        nextfirst = items.length - 1;
+        nextlast = size;
+    }
     public void addFirst(T item){
         if (size == items.length){
-            givespaceforaddfirst(size + 1);
+            resize();
         }
+//        if (nextfirst == nextlast) {
+//            resize(item);
+//        }
         items[nextfirst] = item;
         /*update the nextfirst*/
         nextfirst = minusone(nextfirst);
@@ -46,8 +61,8 @@ public class ArrayDeque<T>{
     }
 
     public void addLast(T item){
-        if (items.length == size){
-            givespaceforaddlast(size + 1);
+        if (size == items.length){
+            resize();
         }
         items[nextlast] = item;
         nextlast = addone(nextlast);
@@ -94,30 +109,29 @@ public class ArrayDeque<T>{
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
-        ad1.addFirst(10);
+        ad1.addLast(0);
+        ad1.removeLast();
+        ad1.addFirst(2);
+        ad1.removeFirst();
+        ad1.addFirst(4);
+        ad1.removeFirst();
+        ad1.addFirst(6);
+        ad1.addFirst(7);
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.addLast(10);
         ad1.addFirst(11);
-        ad1.addFirst(12);
-        ad1.addFirst(13);
-        ad1.addFirst(14);
-        ad1.addFirst(15);
-        ad1.addFirst(16);
+        ad1.addLast(12);
+        ad1.addLast(13);
+        ad1.addLast(14);
+        ad1.removeLast();
+        ad1.addLast(16);
         ad1.addFirst(17);
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.removeFirst();
-        ad1.addFirst(10);
-        ad1.addFirst(11);
-        ad1.addFirst(12);
-        ad1.addFirst(13);
-        ad1.addFirst(14);
-        ad1.addFirst(15);
-        ad1.addFirst(16);
-        ad1.addFirst(17);
-        ad1.isEmpty();
+        ad1.addFirst(18);
+        ad1.addFirst(19);
+        ad1.addLast(20);
+        ad1.addFirst(21);
+        System.out.println(ad1.get(1));
 
 
     }
