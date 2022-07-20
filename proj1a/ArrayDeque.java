@@ -37,7 +37,7 @@ public class ArrayDeque<T>{
 //        }
     }
     private void resize() {
-        T[] newarray = (T []) new Object[];
+        T[] newarray = (T []) new Object[size+1];
         int oldindex = addone(nextfirst);
         for (int i = 0; i < size;i++){
                 newarray[i] = items[oldindex];
