@@ -36,8 +36,8 @@ public class ArrayDeque<T>{
 //            nextlast = nextlast - items.length;
 //        }
     }
-    private void resize(int cap) {
-        T[] newarray = (T []) new Object[cap];
+    private void resize() {
+        T[] newarray = (T []) new Object[];
         int oldindex = addone(nextfirst);
         for (int i = 0; i < size;i++){
                 newarray[i] = items[oldindex];
@@ -49,7 +49,7 @@ public class ArrayDeque<T>{
     }
     public void addFirst(T item){
         if (size == items.length){
-            resize(size + 1);
+            resize();
         }
 //        if (nextfirst == nextlast) {
 //            resize(item);
@@ -62,7 +62,7 @@ public class ArrayDeque<T>{
 
     public void addLast(T item){
         if (size == items.length){
-            resize(size + 1);
+            resize();
         }
         items[nextlast] = item;
         nextlast = addone(nextlast);
@@ -88,7 +88,7 @@ public class ArrayDeque<T>{
         items[nextfirst] = null;
         size = size - 1;
         if (items.length >= 16 && size < (items.length / 4)) {
-            resize(size + 1);
+            resize();
         }
         return oldfirst;
     }
@@ -101,7 +101,7 @@ public class ArrayDeque<T>{
         items[nextlast] = null;
         size = size - 1;
         if (items.length >= 16 && size < (items.length / 4)) {
-            resize(size + 1);
+            resize();
         }
         return oldlast;
     }
